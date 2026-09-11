@@ -86,11 +86,15 @@
   .block h2 { margin-top: 12px; font-size: clamp(34px, 4.4vw, 60px); font-weight: 500; letter-spacing: -.04em; line-height: 1.05; }
   .block .sub { margin-top: 14px; font-size: 16px; color: var(--grey); }
   .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; list-style: none; }
-  .day { padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .45s var(--ease-quart), border-color .45s var(--ease-quart); }
+  /* Ein Gym-Foto über alle sechs Karten verteilt (Position setzt das Script), ohne Script jede Karte mit eigenem Ausschnitt */
+  .day { padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; background-color: #0b0b0b; background-image: url("assets/gym.jpg"); background-size: cover; background-position: center 62%; background-repeat: no-repeat; background-clip: padding-box; transition: transform .45s var(--ease-quart), border-color .45s var(--ease-quart); }
+  .day::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, rgba(1, 1, 1, .5) 0%, rgba(1, 1, 1, .82) 100%); transition: opacity .45s var(--ease-quart); pointer-events: none; }
+  .day > * { position: relative; z-index: 1; }
   .day:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, .16); }
+  .day:hover::before { opacity: .72; }
   .day .num { font-size: 13px; color: var(--grey); }
   .day .name { font-size: 26px; font-weight: 500; letter-spacing: -.03em; margin-top: 40px; }
-  .day .todo { margin-top: 8px; font-size: 14px; color: var(--grey-dark); }
+  .day .todo { margin-top: 8px; font-size: 14px; color: #9a9a9a; }
 
   .community { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: clamp(32px, 4vw, 52px); }
   .community h2 { margin: 0; font-size: clamp(26px, 3vw, 38px); }
@@ -279,6 +283,29 @@
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   update();
+
+  // Ein Foto über alle sechs Karten, wie durch sechs Fenster (Ausschnitt wie background-size: cover auf dem ganzen Raster)
+  const grid = document.querySelector('.days');
+  const days = [...grid.querySelectorAll('.day')];
+  const gym = new Image();
+  gym.src = 'assets/gym.jpg';
+  const mosaic = () => {
+    if (!gym.naturalWidth) return;
+    const gw = grid.offsetWidth, gh = grid.offsetHeight;
+    // Hohes Raster (Handy): etwas hineinzoomen, damit nicht nur Wand und Boden zu sehen sind
+    const tall = gh > gw;
+    const s = Math.max(gw / gym.naturalWidth, gh / gym.naturalHeight) * (tall ? 1.35 : 1);
+    const w = gym.naturalWidth * s, h = gym.naturalHeight * s;
+    const ox = (gw - w) / 2, oy = (gh - h) * (tall ? 0.72 : 0.62);
+    days.forEach(d => {
+      d.style.backgroundSize = `${w.toFixed(1)}px ${h.toFixed(1)}px`;
+      d.style.backgroundPosition = `${(ox - (d.offsetLeft - grid.offsetLeft)).toFixed(1)}px ${(oy - (d.offsetTop - grid.offsetTop)).toFixed(1)}px`;
+    });
+  };
+  gym.decode().then(mosaic).catch(() => {});
+  document.fonts && document.fonts.ready.then(mosaic);
+  addEventListener('resize', mosaic);
+  addEventListener('load', mosaic);
 
   // Einblenden beim Scrollen
   const io = new IntersectionObserver(entries => entries.forEach(e => {
