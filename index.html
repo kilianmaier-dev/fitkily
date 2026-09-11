@@ -68,9 +68,10 @@
   .app-card strong { display: block; font-size: 15px; font-weight: 500; line-height: 1.3; }
   .app-card span { display: block; margin-top: 4px; font-size: 13px; color: var(--grey); }
 
-  .hero-card { position: absolute; z-index: 3; left: 50%; top: clamp(520px, 70svh, 760px); translate: -50% 0; width: min(440px, calc(100vw - 40px)); padding: 44px 36px 36px; text-align: center; transform: translate3d(0, var(--cy, 0px), 0); }
-  .hero-card h2 { font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; }
-  .hero-card p { margin-top: 14px; font-size: 15px; line-height: 1.55; color: var(--grey); }
+  /* Intro ohne Kasten: am Desktop links unten neben dem Foto, auf Tablet und Handy direkt auf dem dunklen Teil des Fotos */
+  .hero-card { position: absolute; z-index: 3; left: var(--pad); top: clamp(470px, 62svh, 700px); width: min(380px, 30vw); text-align: left; transform: translate3d(0, var(--cy, 0px), 0); }
+  .hero-card h2 { font-size: clamp(26px, 2.4vw, 34px); font-weight: 500; line-height: 1.15; letter-spacing: -.03em; }
+  .hero-card p { margin-top: 14px; font-size: 15px; line-height: 1.6; color: #a0a0a0; }
   .pill { display: inline-block; margin-top: 26px; padding: 13px 26px; border-radius: 999px; background: var(--fg); color: var(--bg); font-size: 14px; font-weight: 500; transition: transform .25s var(--ease-quart), background-color .25s var(--ease-quart); }
   .pill:hover { transform: scale(1.03); background: #e9e9e9; }
   .pill:active { transform: scale(.97); transition-duration: .1s; }
@@ -138,6 +139,12 @@
 
   @media (max-width: 1100px) {
     .statement { font-size: clamp(28px, 3.6vw, 40px); }
+    /* Neben dem Foto ist hier kein Platz mehr: Text mittig auf dem Foto, weicher Schatten statt Kasten */
+    .hero-card { left: 50%; translate: -50% 0; top: clamp(520px, 66svh, 760px); width: min(640px, calc(100vw - 16px)); padding: 72px 64px 66px; text-align: center; background: radial-gradient(closest-side, rgba(1, 1, 1, .92) 0%, rgba(1, 1, 1, .78) 55%, rgba(1, 1, 1, 0) 100%); }
+    .hero-card h2 { font-size: clamp(30px, 4vw, 40px); letter-spacing: -.035em; line-height: 1.1; }
+    .hero-card p { max-width: 40ch; margin: 16px auto 0; color: #a8a8a8; font-size: 16px; }
+    .hero-card .pill { background: transparent; color: var(--fg); border: 1px solid rgba(255, 255, 255, .35); }
+    .hero-card .pill:hover { background: var(--fg); color: var(--bg); }
   }
   @media (max-width: 900px) {
     .days { grid-template-columns: repeat(2, 1fr); }
@@ -151,7 +158,8 @@
     .hero-top { display: contents; }
     .hero-intro { order: 1; position: relative; z-index: 2; padding: calc(70px + 28px) var(--pad) 0; transform: translate3d(0, var(--ty, 0px), 0); opacity: var(--to, 1); }
     .portrait-wrap { order: 2; position: relative; left: auto; top: auto; translate: none; margin: -8px auto 0; height: min(78svh, 700px); }
-    .hero-card { order: 3; position: relative; left: auto; top: auto; translate: none; margin: -34svh auto 0; padding: 36px 24px 28px; }
+    .hero-card { order: 3; position: relative; left: auto; top: auto; translate: none; width: auto; margin: -34svh 0 0; padding: 60px 26px 50px; }
+    .hero-card h2 { font-size: 30px; }
     .app-card { order: 4; width: auto; margin: 16px var(--pad) 0; }
     .days { grid-template-columns: 1fr; }
     .day { min-height: 0; }
@@ -204,7 +212,7 @@
       </a>
     </div>
 
-    <div class="card hero-card spot load" style="--d:.9s">
+    <div class="hero-card load" style="--d:.9s">
       <h2>Hi, ich bin Kily.</h2>
       <p>Hier findest du meinen aktuellen Trainingsplan, genau so, wie ich gerade trainiere. Wenn du ihn ausprobierst, schreib mir, wie es läuft.</p>
       <a class="pill" href="#plan">Zum Plan</a>
