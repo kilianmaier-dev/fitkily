@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fitkily — Trainingsplan</title>
+<meta name="description" content="Der Trainingsplan von fitkily. Push, Pull, Legs, Push, Pull, Arms & Shoulders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0a0a0a; --fg: #e8e4d9; --mute: #8a877f; --line: #2a2927; --red: #c8102e; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: Archivo, system-ui, sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  main { max-width: 640px; margin: 0 auto; padding: 56px 24px 40px; }
+  .label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  h1 { font-weight: 900; font-size: clamp(56px, 16vw, 96px); line-height: .9; letter-spacing: -.03em; margin: 12px 0 16px; }
+  .lead { font-size: 18px; line-height: 1.45; color: var(--mute); max-width: 36ch; }
+  section { margin-top: 48px; }
+  section .label { margin-bottom: 12px; }
+  ol { list-style: none; border-top: 1px solid var(--line); }
+  li { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  li .name { font-weight: 600; font-size: 20px; }
+  li .day { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--mute); }
+  .status { margin-top: 16px; font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--mute); }
+  .status::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--red); margin-right: 10px; }
+  .links { display: grid; gap: 12px; }
+  a.btn { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--fg); color: var(--fg); text-decoration: none; font-weight: 600; font-size: 17px; transition: background .15s, color .15s; }
+  a.btn:hover { background: var(--fg); color: var(--bg); }
+  a.btn.primary { background: var(--fg); color: var(--bg); }
+  a.btn.primary:hover { background: transparent; color: var(--fg); }
+  a.btn .sub { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 400; opacity: .7; white-space: nowrap; }
+  footer { margin-top: 64px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--mute); }
+</style>
+</head>
+<body>
+<main>
+  <p class="label">fitkily / Trainingsplan</p>
+  <h1>FITKILY</h1>
+  <p class="lead">Gym und Running. Für Leute, die nicht auf Motivation warten.</p>
+
+  <section>
+    <p class="label">Die Woche — 6 Einheiten</p>
+    <ol>
+      <li><span class="name">Push</span><span class="day">Tag 1</span></li>
+      <li><span class="name">Pull</span><span class="day">Tag 2</span></li>
+      <li><span class="name">Legs</span><span class="day">Tag 3</span></li>
+      <li><span class="name">Push</span><span class="day">Tag 4</span></li>
+      <li><span class="name">Pull</span><span class="day">Tag 5</span></li>
+      <li><span class="name">Arms &amp; Shoulders</span><span class="day">Tag 6</span></li>
+    </ol>
+    <p class="status">Übungen, Sätze und Wiederholungen folgen.</p>
+  </section>
+
+  <section>
+    <p class="label">Links</p>
+    <div class="links">
+      <a class="btn primary" href="https://apps.apple.com/de/app/gym-tracker-trevit/id6774616286">Diesen Plan tracke ich mit TREVIT <span class="sub">App Store</span></a>
+      <a class="btn" href="https://discord.gg/VytfM4EyFu">Fragen zum Plan? Discord <span class="sub">kostenlos</span></a>
+    </div>
+  </section>
+
+  <footer>fitkily.trevit.de</footer>
+</main>
+</body>
+</html>
