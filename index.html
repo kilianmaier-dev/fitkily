@@ -4,63 +4,191 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>fitkily — Trainingsplan</title>
-<meta name="description" content="Der Trainingsplan von fitkily. Push, Pull, Legs, Push, Pull, Arms & Shoulders.">
+<meta name="description" content="Hybrid Athlete. Gym und Running. Der Trainingsplan von fitkily: Push, Pull, Legs, Push, Pull, Arms & Shoulders.">
+<meta name="theme-color" content="#010101">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-  :root { --bg: #0a0a0a; --fg: #e8e4d9; --mute: #8a877f; --line: #2a2927; --red: #c8102e; }
+  :root {
+    --bg: #010101;
+    --fg: #ffffff;
+    --grey: #878787;
+    --grey-dark: #535353;
+    --line: rgba(255, 255, 255, .08);
+    --card: linear-gradient(180deg, rgba(23, 23, 23, .55), rgba(19, 19, 19, .55));
+    --radius: 1.7rem;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--fg); font-family: Archivo, system-ui, sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
-  main { max-width: 640px; margin: 0 auto; padding: 56px 24px 40px; }
-  .label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
-  h1 { font-weight: 900; font-size: clamp(56px, 16vw, 96px); line-height: .9; letter-spacing: -.03em; margin: 12px 0 16px; }
-  .lead { font-size: 18px; line-height: 1.45; color: var(--mute); max-width: 36ch; }
-  section { margin-top: 48px; }
-  section .label { margin-bottom: 12px; }
-  ol { list-style: none; border-top: 1px solid var(--line); }
-  li { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
-  li .name { font-weight: 600; font-size: 20px; }
-  li .day { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--mute); }
-  .status { margin-top: 16px; font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--mute); }
-  .status::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--red); margin-right: 10px; }
-  .links { display: grid; gap: 12px; }
-  a.btn { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--fg); color: var(--fg); text-decoration: none; font-weight: 600; font-size: 17px; transition: background .15s, color .15s; }
-  a.btn:hover { background: var(--fg); color: var(--bg); }
-  a.btn.primary { background: var(--fg); color: var(--bg); }
-  a.btn.primary:hover { background: transparent; color: var(--fg); }
-  a.btn .sub { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 400; opacity: .7; white-space: nowrap; }
-  footer { margin-top: 64px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--mute); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: "Plus Jakarta Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 18px clamp(20px, 3vw, 40px); border-bottom: 1px solid var(--line); background: rgba(1, 1, 1, .7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .logo { font-weight: 600; font-size: 20px; letter-spacing: -.04em; }
+  nav { display: flex; gap: 32px; font-size: 14px; color: var(--grey); }
+  nav a { transition: color .2s; }
+  nav a:hover { color: var(--fg); }
+  .header-cta { justify-self: end; font-size: 14px; font-weight: 500; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); transition: background .2s, color .2s; }
+  .header-cta:hover { background: var(--fg); color: var(--bg); }
+
+  /* Hero */
+  .hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding: clamp(40px, 6vw, 80px) clamp(20px, 3vw, 40px) 0; }
+  .statement { max-width: 16ch; font-size: clamp(28px, 3.2vw, 46px); font-weight: 500; line-height: 1.15; letter-spacing: -.03em; background: linear-gradient(180deg, #9b9b9b 0%, #4a4a4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .icons { display: flex; gap: 22px; margin-top: 36px; }
+  .icons a { color: var(--grey); transition: color .2s; }
+  .icons a:hover { color: var(--fg); }
+  .icons svg { width: 22px; height: 22px; display: block; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .app-card { display: flex; align-items: center; gap: 16px; width: min(340px, 100%); padding: 14px 18px 14px 14px; transition: border-color .2s; }
+  .app-card:hover { border-color: rgba(255, 255, 255, .22); }
+  .app-card img { width: 64px; height: 64px; border-radius: 16px; flex: none; }
+  .app-card strong { display: block; font-size: 15px; font-weight: 500; line-height: 1.3; }
+  .app-card span { display: block; margin-top: 4px; font-size: 13px; color: var(--grey); }
+
+  /* Stage mit Foto */
+  .stage { position: relative; height: clamp(620px, 100vh, 1000px); display: grid; place-items: end center; padding-bottom: clamp(40px, 8%, 110px); margin-top: -40px; }
+  .stage::before { content: ""; position: absolute; inset: 10% 20%; background: radial-gradient(ellipse at 50% 45%, #1c1c1c 0%, rgba(1, 1, 1, 0) 65%); }
+  .stage.no-photo { height: auto; margin-top: 0; padding: clamp(60px, 8vw, 110px) 0 0; }
+  .stage.no-photo::before { inset: 0 15% -30%; }
+  .portrait { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: none; object-fit: contain; filter: grayscale(1) contrast(1.05) brightness(.85); -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%); }
+  .stage-card { position: relative; z-index: 2; width: min(440px, calc(100vw - 40px)); padding: 44px 36px 36px; text-align: center; }
+  .stage-card h2 { font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; }
+  .stage-card p { margin-top: 14px; font-size: 15px; line-height: 1.55; color: var(--grey); }
+  .pill { display: inline-block; margin-top: 26px; padding: 13px 26px; border-radius: 999px; background: var(--fg); color: var(--bg); font-size: 14px; font-weight: 500; transition: transform .2s, background .2s; }
+  .pill:hover { transform: translateY(-1px); background: #e9e9e9; }
+
+  /* Plan */
+  section.block { padding: clamp(80px, 10vw, 140px) clamp(20px, 3vw, 40px) 0; max-width: 1200px; margin: 0 auto; }
+  .eyebrow { font-size: 13px; color: var(--grey); letter-spacing: .02em; }
+  .block h2 { margin-top: 12px; font-size: clamp(32px, 4vw, 52px); font-weight: 500; letter-spacing: -.035em; line-height: 1.05; }
+  .block .sub { margin-top: 14px; font-size: 16px; color: var(--grey); }
+  .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; list-style: none; }
+  .day { padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; }
+  .day .num { font-size: 13px; color: var(--grey); }
+  .day .name { font-size: 26px; font-weight: 500; letter-spacing: -.03em; margin-top: 40px; }
+  .day .todo { margin-top: 8px; font-size: 14px; color: var(--grey-dark); }
+
+  .community { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: clamp(32px, 4vw, 52px); }
+  .community h2 { margin: 0; font-size: clamp(26px, 3vw, 38px); }
+  .community p { margin-top: 10px; color: var(--grey); font-size: 16px; line-height: 1.5; }
+  .community .pill { margin-top: 0; flex: none; }
+
+  /* Footer mit Riesen-Schriftzug */
+  footer { margin-top: clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); overflow: hidden; }
+  .foot-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px clamp(20px, 3vw, 40px); font-size: 13px; color: var(--grey); }
+  .foot-links a:hover { color: var(--fg); }
+  .wordmark { font-size: 31vw; font-weight: 500; letter-spacing: -.06em; line-height: 1.05; text-align: center; margin-top: -.12em; margin-bottom: -.02em; background: linear-gradient(180deg, #5c5c5c 0%, #2a2a2a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; }
+
+  /* Einblenden beim Scrollen */
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  @media (max-width: 900px) {
+    .days { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    header { grid-template-columns: 1fr auto; }
+    nav { display: none; }
+    .hero { flex-direction: column; }
+    .app-card { width: 100%; }
+    .stage { height: 560px; margin-top: 0; }
+    .stage-card { padding: 36px 24px 28px; }
+    .days { grid-template-columns: 1fr; }
+    .day { min-height: 0; }
+    .day .name { margin-top: 24px; }
+    .community { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <p class="label">fitkily / Trainingsplan</p>
-  <h1>FITKILY</h1>
-  <p class="lead">Gym und Running. Für Leute, die nicht auf Motivation warten.</p>
 
-  <section>
-    <p class="label">Die Woche — 6 Einheiten</p>
-    <ol>
-      <li><span class="name">Push</span><span class="day">Tag 1</span></li>
-      <li><span class="name">Pull</span><span class="day">Tag 2</span></li>
-      <li><span class="name">Legs</span><span class="day">Tag 3</span></li>
-      <li><span class="name">Push</span><span class="day">Tag 4</span></li>
-      <li><span class="name">Pull</span><span class="day">Tag 5</span></li>
-      <li><span class="name">Arms &amp; Shoulders</span><span class="day">Tag 6</span></li>
-    </ol>
-    <p class="status">Übungen, Sätze und Wiederholungen folgen.</p>
-  </section>
+<header>
+  <a class="logo" href="#">fitkily.</a>
+  <nav>
+    <a href="#plan">Plan</a>
+    <a href="#community">Community</a>
+    <a href="https://apps.apple.com/de/app/gym-tracker-trevit/id6774616286">App</a>
+  </nav>
+  <a class="header-cta" href="https://discord.gg/VytfM4EyFu">Discord</a>
+</header>
 
-  <section>
-    <p class="label">Links</p>
-    <div class="links">
-      <a class="btn primary" href="https://apps.apple.com/de/app/gym-tracker-trevit/id6774616286">Diesen Plan tracke ich mit TREVIT <span class="sub">App Store</span></a>
-      <a class="btn" href="https://discord.gg/VytfM4EyFu">Fragen zum Plan? Discord <span class="sub">kostenlos</span></a>
+<div class="hero">
+  <div class="reveal">
+    <h1 class="statement">Hybrid Athlete. Gym und Running, sechs Tage die Woche. Jeder Tag dokumentiert.</h1>
+    <div class="icons">
+      <a href="https://discord.gg/VytfM4EyFu" aria-label="Discord">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.4C.6 9 0 13.6.3 18.1a19.9 19.9 0 0 0 6 3l1.3-2a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12 0l.5.4c-.6.4-1.3.7-2 1l1.3 2a19.8 19.8 0 0 0 6-3c.5-5.2-.9-9.7-3.6-13.7ZM8.5 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>
+      </a>
+      <a href="https://apps.apple.com/de/app/gym-tracker-trevit/id6774616286" aria-label="TREVIT im App Store">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8a4.6 4.6 0 0 0-3.6-2c-1.5-.1-3 .9-3.7.9-.8 0-2-.9-3.3-.9A4.9 4.9 0 0 0 3.8 9.3c-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8 2.2-1.2 3-2.5a10 10 0 0 0 1.4-2.8 4.4 4.4 0 0 1-2.6-4.1ZM14 5.2a4.4 4.4 0 0 0 1-3.2 4.5 4.5 0 0 0-3 1.5 4.2 4.2 0 0 0-1 3.1c1.1 0 2.2-.5 3-1.4Z"/></svg>
+      </a>
+      <a href="mailto:fitkily@trevit.de" aria-label="E-Mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
     </div>
-  </section>
+  </div>
 
-  <footer>fitkily.trevit.de</footer>
-</main>
+  <a class="card app-card reveal" href="https://apps.apple.com/de/app/gym-tracker-trevit/id6774616286">
+    <img src="assets/trevit.png" alt="TREVIT App-Icon">
+    <div>
+      <strong>Diesen Plan tracke ich mit TREVIT.</strong>
+      <span>Im App Store laden</span>
+    </div>
+  </a>
+</div>
+
+<div class="stage">
+  <img class="portrait" src="assets/portrait.jpg" alt="Kilian von fitkily" onerror="this.parentNode.classList.add('no-photo'); this.remove()">
+  <div class="card stage-card reveal">
+    <h2>Der Plan, nach dem ich trainiere.</h2>
+    <p>Push, Pull, Legs, Push, Pull, Arms &amp; Shoulders. Sechs Einheiten die Woche, kein Ausfall.</p>
+    <a class="pill" href="#plan">Zum Plan</a>
+  </div>
+</div>
+
+<section class="block" id="plan">
+  <p class="eyebrow reveal">Trainingsplan</p>
+  <h2 class="reveal">Die Woche.</h2>
+  <p class="sub reveal">Übungen, Sätze und Wiederholungen folgen.</p>
+  <ol class="days">
+    <li class="card day reveal"><span class="num">Tag 1</span><div><p class="name">Push</p><p class="todo">Übungen folgen</p></div></li>
+    <li class="card day reveal"><span class="num">Tag 2</span><div><p class="name">Pull</p><p class="todo">Übungen folgen</p></div></li>
+    <li class="card day reveal"><span class="num">Tag 3</span><div><p class="name">Legs</p><p class="todo">Übungen folgen</p></div></li>
+    <li class="card day reveal"><span class="num">Tag 4</span><div><p class="name">Push</p><p class="todo">Übungen folgen</p></div></li>
+    <li class="card day reveal"><span class="num">Tag 5</span><div><p class="name">Pull</p><p class="todo">Übungen folgen</p></div></li>
+    <li class="card day reveal"><span class="num">Tag 6</span><div><p class="name">Arms &amp; Shoulders</p><p class="todo">Übungen folgen</p></div></li>
+  </ol>
+</section>
+
+<section class="block" id="community">
+  <div class="card community reveal">
+    <div>
+      <h2>Fragen zum Plan?</h2>
+      <p>Formcheck, PRs und Läufe. Die Community ist im Discord.</p>
+    </div>
+    <a class="pill" href="https://discord.gg/VytfM4EyFu">Discord beitreten</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-links">
+    <span>fitkily.trevit.de</span>
+    <a href="mailto:fitkily@trevit.de">fitkily@trevit.de</a>
+  </div>
+  <div class="wordmark" aria-hidden="true">fitkily</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
