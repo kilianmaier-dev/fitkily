@@ -53,8 +53,9 @@
   .portrait-wrap { position: absolute; left: 50%; top: 9svh; height: min(125svh, 1250px); aspect-ratio: 444 / 1196; translate: -50% 0; }
   .portrait { width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 25%; transform: translate3d(0, var(--py, 0px), 0) scale(var(--ps, 1)); opacity: var(--po, 1); -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 92%); mask-image: linear-gradient(to bottom, #000 58%, transparent 92%); will-change: transform, opacity; }
   .hero-top { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding: calc(76px + clamp(32px, 6vw, 72px)) var(--pad) 0; transform: translate3d(0, var(--ty, 0px), 0); opacity: var(--to, 1); }
-  .statement { max-width: 15ch; font-size: clamp(30px, 3.3vw, 48px); font-weight: 500; line-height: 1.12; letter-spacing: -.035em; background: linear-gradient(180deg, #a3a3a3 0%, #4a4a4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .icons { display: flex; gap: 22px; margin-top: 36px; }
+  /* padding-bottom, damit der Farbverlauf auch die Unterlängen (g, y) der letzten Zeile abdeckt */
+  .statement { max-width: 15ch; padding-bottom: .16em; font-size: clamp(30px, 3.3vw, 48px); font-weight: 500; line-height: 1.12; letter-spacing: -.035em; background: linear-gradient(180deg, #a3a3a3 0%, #4a4a4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .icons { display: flex; gap: 22px; margin-top: 28px; }
   .icons a { color: var(--grey); transition: color .25s var(--ease-quart), transform .25s var(--ease-quart); }
   .icons a:hover { color: var(--fg); transform: translateY(-2px); }
   .icons svg { width: 22px; height: 22px; display: block; }
@@ -194,7 +195,7 @@
       <a class="card app-card spot load" style="--d:.7s" href="https://apps.apple.com/de/app/gym-tracker-trevit/id6774616286">
         <img src="assets/trevit.png" alt="TREVIT App-Icon">
         <div>
-          <strong>TREVIT, meine eigene Gym&#8209;App.</strong>
+          <strong>Meine Gym&#8209;App: TREVIT</strong>
           <span>Damit tracke ich jedes Training · App&nbsp;Store</span>
         </div>
       </a>
