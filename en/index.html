@@ -1,47 +1,36 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>fitkily</title>
-<meta name="description" content="Hybrid Athlete. Gym und Running. Mein aktueller Trainingsplan.">
+<meta name="description" content="Hybrid athlete. Gym and running. My current training plan.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="fitkily">
-<meta property="og:locale" content="de_DE">
-<meta property="og:url" content="https://fitkily.trevit.de/">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://fitkily.trevit.de/en/">
 <meta property="og:title" content="fitkily">
-<meta property="og:description" content="Hybrid Athlete. Gym und Running.">
-<meta property="og:image" content="https://fitkily.trevit.de/assets/og.jpg">
+<meta property="og:description" content="Hybrid Athlete. Gym and Running.">
+<meta property="og:image" content="https://fitkily.trevit.de/assets/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Kily von fitkily im Gym">
+<meta property="og:image:alt" content="Kily from fitkily in the gym">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://fitkily.trevit.de/">
+<link rel="canonical" href="https://fitkily.trevit.de/en/">
 <link rel="alternate" hreflang="de" href="https://fitkily.trevit.de/">
 <link rel="alternate" hreflang="en" href="https://fitkily.trevit.de/en/">
 <link rel="alternate" hreflang="x-default" href="https://fitkily.trevit.de/">
-<script>
-  // Sprache: gemerkte Wahl zuerst, sonst einmalig nach Browsersprache (Bots bleiben auf Deutsch)
-  (function () {
-    try {
-      var saved = localStorage.getItem('fitkily-lang');
-      var bot = /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|discord|telegram|preview/i.test(navigator.userAgent);
-      var german = (navigator.languages || [navigator.language || '']).some(function (l) { return /^de\b/i.test(l); });
-      if (saved === 'en' || (!saved && !bot && !german)) location.replace('en/' + location.hash);
-    } catch (e) {}
-  })();
-</script>
 <meta name="theme-color" content="#010101">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin>
-<link rel="preload" as="image" href="assets/portrait.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin>
+<link rel="preload" as="image" href="../assets/portrait.png">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   /* Schrift liegt auf der eigenen Seite, keine Verbindung zu Google (DSGVO) */
-  @font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("assets/fonts/plus-jakarta-sans-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-  @font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("assets/fonts/plus-jakarta-sans-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("../assets/fonts/plus-jakarta-sans-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("../assets/fonts/plus-jakarta-sans-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   :root {
     --bg: #010101;
     --fg: #ffffff;
@@ -124,12 +113,12 @@
   .day { padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; background-color: #0b0b0b; background-size: cover; background-position: center; background-repeat: no-repeat; background-clip: padding-box; transition: transform .45s var(--ease-quart), border-color .45s var(--ease-quart); }
   .day::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, rgba(1, 1, 1, .5) 0%, rgba(1, 1, 1, .82) 100%); transition: opacity .45s var(--ease-quart); pointer-events: none; }
   .day > * { position: relative; z-index: 1; }
-  .day:nth-child(1) { background-image: url("assets/days/day1.jpg"); }
-  .day:nth-child(2) { background-image: url("assets/days/day2.jpg"); }
-  .day:nth-child(3) { background-image: url("assets/days/day3.jpg"); }
-  .day:nth-child(4) { background-image: url("assets/days/day4.jpg"); }
-  .day:nth-child(5) { background-image: url("assets/days/day5.jpg"); }
-  .day:nth-child(6) { background-image: url("assets/days/day6.jpg"); }
+  .day:nth-child(1) { background-image: url("../assets/days/day1.jpg"); }
+  .day:nth-child(2) { background-image: url("../assets/days/day2.jpg"); }
+  .day:nth-child(3) { background-image: url("../assets/days/day3.jpg"); }
+  .day:nth-child(4) { background-image: url("../assets/days/day4.jpg"); }
+  .day:nth-child(5) { background-image: url("../assets/days/day5.jpg"); }
+  .day:nth-child(6) { background-image: url("../assets/days/day6.jpg"); }
   .day:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, .16); }
   .day:hover::before { opacity: .72; }
   .day .num { font-size: 13px; color: var(--grey); }
@@ -210,8 +199,8 @@
     <a href="https://trevit.de/i/32A6Y6">App</a>
   </nav>
   <div class="header-right">
-    <div class="lang" aria-label="Sprache">
-      <span aria-current="true">DE</span>/<a href="en/" hreflang="en" lang="en" onclick="try{localStorage.setItem('fitkily-lang','en')}catch(e){}">EN</a>
+    <div class="lang" aria-label="Language">
+      <a href="../" hreflang="de" lang="de" onclick="try{localStorage.setItem('fitkily-lang','de')}catch(e){}">DE</a>/<span aria-current="true">EN</span>
     </div>
     <a class="header-cta" href="https://discord.gg/W94eZMj7jv">Discord</a>
   </div>
@@ -220,12 +209,12 @@
 <main>
   <section class="hero">
     <div class="portrait-wrap">
-      <img class="portrait" src="assets/portrait.png" alt="Kily von fitkily im Gym" fetchpriority="high">
+      <img class="portrait" src="../assets/portrait.png" alt="Kily from fitkily in the gym" fetchpriority="high">
     </div>
 
     <div class="hero-top">
       <div class="hero-intro">
-        <h1 class="statement load" style="--d:.35s">Hybrid Athlete.<br>Gym und Running.</h1>
+        <h1 class="statement load" style="--d:.35s">Hybrid Athlete.<br>Gym and Running.</h1>
         <div class="icons load" style="--d:.55s">
           <a href="https://www.tiktok.com/@fitkily" aria-label="TikTok">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg>
@@ -240,42 +229,42 @@
       </div>
 
       <a class="card app-card spot load" style="--d:.7s" href="https://trevit.de/i/32A6Y6">
-        <img src="assets/trevit.png" alt="TREVIT App-Icon">
+        <img src="../assets/trevit.png" alt="TREVIT app icon">
         <div>
-          <strong>Meine Gym&#8209;App: TREVIT</strong>
-          <span>Adde mich in der App · Code&nbsp;32A6Y6</span>
+          <strong>My gym app: TREVIT</strong>
+          <span>Add me in the app · Code&nbsp;32A6Y6</span>
         </div>
       </a>
     </div>
 
     <div class="hero-card load" style="--d:.9s">
-      <h2>Hi, ich bin Kily.</h2>
-      <p>Hier findest du meinen aktuellen Trainingsplan, genau so, wie ich gerade trainiere. Wenn du ihn ausprobierst, schreib mir, wie es läuft.</p>
-      <a class="pill" href="#plan">Zum Plan</a>
+      <h2>Hi, I’m Kily.</h2>
+      <p>This is my current training plan, exactly how I’m training right now. If you try it, let me know how it goes.</p>
+      <a class="pill" href="#plan">See the plan</a>
     </div>
   </section>
 
   <section class="block" id="plan">
-    <p class="eyebrow reveal">Trainingsplan</p>
-    <h2 class="mask" style="--d:.08s"><span>Meine Woche.</span></h2>
-    <p class="sub reveal" style="--d:.16s">Sechs Einheiten im Gym, dazu Laufen. Die Übungen trage ich hier nach.</p>
+    <p class="eyebrow reveal">Training plan</p>
+    <h2 class="mask" style="--d:.08s"><span>My week.</span></h2>
+    <p class="sub reveal" style="--d:.16s">Six gym sessions a week, plus running. I’ll add the exercises here.</p>
     <ol class="days">
-      <li class="card day spot reveal" style="--d:0s"><span class="num">Tag 1</span><div><p class="name">Push</p><p class="todo">Übungen folgen</p></div></li>
-      <li class="card day spot reveal" style="--d:.09s"><span class="num">Tag 2</span><div><p class="name">Pull</p><p class="todo">Übungen folgen</p></div></li>
-      <li class="card day spot reveal" style="--d:.18s"><span class="num">Tag 3</span><div><p class="name">Legs</p><p class="todo">Übungen folgen</p></div></li>
-      <li class="card day spot reveal" style="--d:.27s"><span class="num">Tag 4</span><div><p class="name">Push</p><p class="todo">Übungen folgen</p></div></li>
-      <li class="card day spot reveal" style="--d:.36s"><span class="num">Tag 5</span><div><p class="name">Pull</p><p class="todo">Übungen folgen</p></div></li>
-      <li class="card day spot reveal" style="--d:.45s"><span class="num">Tag 6</span><div><p class="name">Arms &amp; Shoulders</p><p class="todo">Übungen folgen</p></div></li>
+      <li class="card day spot reveal" style="--d:0s"><span class="num">Day 1</span><div><p class="name">Push</p><p class="todo">Exercises coming soon</p></div></li>
+      <li class="card day spot reveal" style="--d:.09s"><span class="num">Day 2</span><div><p class="name">Pull</p><p class="todo">Exercises coming soon</p></div></li>
+      <li class="card day spot reveal" style="--d:.18s"><span class="num">Day 3</span><div><p class="name">Legs</p><p class="todo">Exercises coming soon</p></div></li>
+      <li class="card day spot reveal" style="--d:.27s"><span class="num">Day 4</span><div><p class="name">Push</p><p class="todo">Exercises coming soon</p></div></li>
+      <li class="card day spot reveal" style="--d:.36s"><span class="num">Day 5</span><div><p class="name">Pull</p><p class="todo">Exercises coming soon</p></div></li>
+      <li class="card day spot reveal" style="--d:.45s"><span class="num">Day 6</span><div><p class="name">Arms &amp; Shoulders</p><p class="todo">Exercises coming soon</p></div></li>
     </ol>
   </section>
 
   <section class="block" id="community">
     <div class="card community spot reveal">
       <div>
-        <h2 class="mask"><span>Schreib mir.</span></h2>
-        <p>Du hast Fragen zum Plan oder willst zeigen, woran du gerade arbeitest? Im Discord beantworte ich Fragen, und du triffst Leute, die ähnlich trainieren.</p>
+        <h2 class="mask"><span>Message me.</span></h2>
+        <p>Got questions about the plan or want to show what you’re working on? I answer questions in the Discord, and you’ll meet people who train like you.</p>
       </div>
-      <a class="pill" href="https://discord.gg/W94eZMj7jv">Discord beitreten</a>
+      <a class="pill" href="https://discord.gg/W94eZMj7jv">Join the Discord</a>
     </div>
   </section>
 </main>
@@ -283,12 +272,12 @@
 <footer>
   <div class="foot-links">
     <span>fitkily.trevit.de</span>
-    <span class="legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="mailto:fitkily@trevit.de">fitkily@trevit.de</a></span>
+    <span class="legal"><a href="../impressum.html" hreflang="de">Imprint</a><a href="../datenschutz.html" hreflang="de">Privacy</a><a href="mailto:fitkily@trevit.de">fitkily@trevit.de</a></span>
   </div>
   <div class="wordmark" aria-hidden="true">fitkily</div>
 </footer>
 
-<script src="assets/js/lenis.min.js"></script>
+<script src="../assets/js/lenis.min.js"></script>
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
