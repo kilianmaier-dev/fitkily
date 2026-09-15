@@ -25,7 +25,7 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin>
-<link rel="preload" as="image" href="../assets/portrait.png">
+<link rel="preload" as="image" href="../assets/portrait-back.webp">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   /* Schrift liegt auf der eigenen Seite, keine Verbindung zu Google (DSGVO) */
@@ -71,8 +71,8 @@
   /* Hero */
   .hero { position: relative; height: max(120svh, 860px); }
   .hero::before { content: ""; position: absolute; left: 50%; top: 2svh; width: min(1100px, 92vw); height: 110svh; translate: -50% 0; background: radial-gradient(closest-side, #1d1d1d 0%, rgba(1, 1, 1, 0) 100%); pointer-events: none; }
-  .portrait-wrap { position: absolute; left: 50%; top: 9svh; height: min(125svh, 1250px); aspect-ratio: 444 / 1196; translate: -50% 0; }
-  .portrait { width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 25%; transform: translate3d(0, var(--py, 0px), 0) scale(var(--ps, 1)); opacity: var(--po, 1); -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 92%); mask-image: linear-gradient(to bottom, #000 58%, transparent 92%); will-change: transform, opacity; }
+  .portrait-wrap { position: absolute; left: 50%; top: 9svh; height: min(108svh, 1080px); aspect-ratio: 761 / 1254; translate: -50% 0; }
+  .portrait { width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 25%; transform: translate3d(0, var(--py, 0px), 0) scale(var(--ps, 1)); opacity: var(--po, 1); -webkit-mask-image: linear-gradient(to bottom, #000 64%, transparent 96%); mask-image: linear-gradient(to bottom, #000 64%, transparent 96%); will-change: transform, opacity; }
   .hero-top { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding: calc(76px + clamp(32px, 6vw, 72px)) var(--pad) 0; transform: translate3d(0, var(--ty, 0px), 0); opacity: var(--to, 1); }
   /* padding-bottom, damit der Farbverlauf auch die Unterlängen (g, y) der letzten Zeile abdeckt */
   .statement { max-width: 15ch; padding-bottom: .16em; font-size: clamp(30px, 3.3vw, 48px); font-weight: 500; line-height: 1.12; letter-spacing: -.035em; background: linear-gradient(180deg, #a3a3a3 0%, #4a4a4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -89,7 +89,7 @@
   .app-card span { display: block; margin-top: 4px; font-size: 13px; color: var(--grey); }
 
   /* Intro ohne Kasten: am Desktop links unten neben dem Foto, auf Tablet und Handy direkt auf dem dunklen Teil des Fotos */
-  .hero-card { position: absolute; z-index: 3; left: var(--pad); top: clamp(470px, 62svh, 700px); width: min(380px, 30vw); text-align: left; transform: translate3d(0, var(--cy, 0px), 0); }
+  .hero-card { position: absolute; z-index: 3; left: var(--pad); top: clamp(470px, 62svh, 700px); width: min(380px, 27vw); text-align: left; transform: translate3d(0, var(--cy, 0px), 0); }
   .hero-card h2 { font-size: clamp(26px, 2.4vw, 34px); font-weight: 500; line-height: 1.15; letter-spacing: -.03em; }
   .hero-card p { margin-top: 14px; font-size: 15px; line-height: 1.6; color: #a0a0a0; }
   .pill { display: inline-block; margin-top: 26px; padding: 13px 26px; border-radius: 999px; background: var(--fg); color: var(--bg); font-size: 14px; font-weight: 500; transition: transform .25s var(--ease-quart), background-color .25s var(--ease-quart); }
@@ -209,7 +209,7 @@
 <main>
   <section class="hero">
     <div class="portrait-wrap">
-      <img class="portrait" src="../assets/portrait.png" alt="Kily from fitkily in the gym" fetchpriority="high">
+      <img class="portrait" src="../assets/portrait-back.webp" alt="Kily from fitkily in the gym" fetchpriority="high">
     </div>
 
     <div class="hero-top">
